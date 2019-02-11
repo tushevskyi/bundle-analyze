@@ -1,5 +1,10 @@
 # angular2-webpack-seed
 
+to analyze rxjs go to `home.component.ts` and play with operators
+
+npm run build:analyzer
+npm run bundle-report
+
 [![Build Status](https://travis-ci.org/fgladisch/angular2-webpack-seed.svg?branch=master)](https://travis-ci.org/fgladisch/angular2-webpack-seed)
 
 This is a minimalistic Angular 2+ seed project, featuring:
