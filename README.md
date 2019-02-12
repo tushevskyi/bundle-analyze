@@ -1,7 +1,9 @@
 # Optimize size of angular application
 
 ### Initial state 
-There is project implemented on [angular2-webpack-seed](https://github.com/fgladisch/angular2-webpack-seed)
+There is project implemented on [angular2-webpack-seed](https://github.com/fgladisch/angular2-webpack-seed):
+
+`git checkout 1.0.0`
 
 Build project:
 ```
@@ -11,7 +13,9 @@ npm run bundle-report
 ```
 
 ### Final state 
-The project transferred to [ng-cli](https://cli.angular.io/)
+The project transferred to [ng-cli](https://cli.angular.io/):
+
+`git checkout 2.0.0`
 
 ### Result
 
