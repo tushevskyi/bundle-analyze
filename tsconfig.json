@@ -22,7 +22,7 @@
   "buildOnSave": false,
   "exclude": [
     "./node_modules",
-    "./dist",
+    "./dist-init-webpack",
     "./aot",
     "./src/main-aot.ts"
   ],

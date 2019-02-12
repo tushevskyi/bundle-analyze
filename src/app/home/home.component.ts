@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { debounceTime } from 'rxjs/operators/debounceTime';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs/operators/map';
 
 @Component({
   selector: 'seed-home',
