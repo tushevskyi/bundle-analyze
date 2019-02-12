@@ -1,81 +1,53 @@
-# angular2-webpack-seed
+# Optimize size of angular application
 
-to analyze rxjs go to `home.component.ts` and play with operators
+### Initial state 
+There is project implemented on [angular2-webpack-seed](https://github.com/fgladisch/angular2-webpack-seed):
 
-npm run build:analyzer
-npm run bundle-report
+`git checkout 1.0.0`
 
-[![Build Status](https://travis-ci.org/fgladisch/angular2-webpack-seed.svg?branch=master)](https://travis-ci.org/fgladisch/angular2-webpack-seed)
-
-This is a minimalistic Angular 2+ seed project, featuring:
-* [Angular 4.3](https://angular.io)
-* [TypeScript 2.4](https://www.typescriptlang.org)
-* [Bootstrap 4 (Beta)](https://getbootstrap.com)
-* [Ahead-of-Time Compilation](https://angular.io/guide/aot-compiler)
-* [Tree Shaking](https://webpack.js.org/guides/tree-shaking) and [Compression](https://github.com/webpack-contrib/compression-webpack-plugin) — Tiny production files :mouse2:
-* [Sass](http://sass-lang.com)
-* [ng-bootstrap](https://ng-bootstrap.github.io)
-* [ngx-translate](http://www.ngx-translate.com)
-* [webpack 3](https://webpack.github.io)
-* [@ngtools/webpack](https://www.npmjs.com/package/@ngtools/webpack) — Makes AOT + Sass possible :tada:
-* [Karma](https://karma-runner.github.io)
-* [Jasmine](http://jasmine.github.io)
-* [TSLint](https://palantir.github.io/tslint)
-* [Codelyzer](https://github.com/mgechev/codelyzer)
-
-This seed follows the [Angular Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html).
-
-## How to use
-
-### Install dependencies
-
-```bash
+Build project:
+```
 npm install
-# or
-yarn
+npm run build:analyzer 
+npm run bundle-report
 ```
 
-### Development server
+### Final state 
+The project transferred to [ng-cli](https://cli.angular.io/):
 
-Use the following command to start a local development server which will display the application at [http://localhost:3000](http://localhost:3000).
+`git checkout 2.0.0`
 
-```bash
-npm start
-# or
-yarn start
-```
+### Result
 
-### Test your code
+**Webpack custom setup (initial state)**
+ 1. Webpack custom setup with old lib (ng4, rxjs5.5, bootstrap-4alfa)
+ 1. Improt rxjs operators directly from file
+---  
+Build 6 files size **180 Kb** (gzip)
 
-The following command will run your unit tests with [Karma](https://karma-runner.github.io).
+ **Ng-cli (after transferring)**
+ 1. Setup ng-cli
+ 1. Install latest version of libs
+ 
+ `yarn add @ng-bootstrap/ng-bootstrap @ngx-translate/core @ngx-translate/http-loader bootstrap --save`
+ 
+ 1. Fix imports
+ 1. `ng build --prod`
+---
+Build 7 files size **151 Kb** (gzip)
 
-```bash
-npm test
-# or
-yarn test
-```
+# Conclusion
+After moving project to the ng-cli and update all libs We won **~29Kb**(gzip) 
 
-### Analyze your code with TSLint
+This result even can be better if `bootstrap 4` did not added 33Kb (without gzip). It happened because they decided to add css variables. 
 
-Run [TSLint](https://github.com/palantir/tslint) with rules based on the [Angular Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html) with this command.
+You can check out brunch `git checkout -b ng-cli origin/ng-cli` with final solution.
 
-```bash
-npm run lint
-# or
-yarn lint
-```
+## Network
 
-### Build for production
-
-Production files are located in `dist`.
-
-This project uses [Ahead-of-Time Compilation](https://angular.io/guide/aot-compiler) and [Tree Shaking](https://webpack.js.org/guides/tree-shaking) for much smaller production files. Files over a threshold of 1KB are also gzipped, which results in approximately 150KB for all JS/HTML/CSS in this project.
-
-```bash
-npm run build
-# or
-yarn build
-```
-
+ | Init | Final |
+ |------|-------|
+ |![init](https://github.com/dmkorol/bundle-analyze/raw/master/init.png "Before optimization")|![init](https://github.com/dmkorol/bundle-analyze/raw/master/final.png "After optimization") |
+  
 # License
 [MIT](/LICENSE)

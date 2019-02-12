@@ -13,7 +13,7 @@ class LanguageItem {
 })
 export class NavigationComponent {
 
-  isCollapsed: boolean = true;
+  isCollapsed = true;
 
   languages: LanguageItem[] = [
     {

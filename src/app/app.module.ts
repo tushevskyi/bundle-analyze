@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NavigationComponent } from './navigation';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './home/home.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NavigationComponent } from './navigation/navigation.component';
 
 export function translateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -36,7 +36,7 @@ export function translateLoaderFactory(http: HttpClient) {
         useFactory: translateLoaderFactory
       }
     }),
-    routing
+    AppRoutingModule
   ]
 })
 export class AppModule { }
