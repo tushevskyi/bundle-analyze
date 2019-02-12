@@ -13,7 +13,7 @@ npm run bundle-report
 ### Final state 
 The project transferred to [ng-cli](https://cli.angular.io/)
 
-## Result
+### Result
 
 **Webpack custom setup (initial state)**
  1. Webpack custom setup with old lib (ng4, rxjs5.5, bootstrap-4alfa)
@@ -43,7 +43,7 @@ You can check out brunch `git checkout -b ng-cli origin/ng-cli` with final solut
 
  | Init | Final |
  |------|-------|
- |![init](https://github.com/dmkorol/bundle-analyze/master/src/init.png "Before optimization")|![init](https://github.com/dmkorol/bundle-analyze/master/src/final.png "After optimization") |
+ |![init](https://github.com/dmkorol/bundle-analyze/raw/master/init.png "Before optimization")|![init](https://github.com/dmkorol/bundle-analyze/raw/master/final.png "After optimization") |
   
 # License
 [MIT](/LICENSE)
