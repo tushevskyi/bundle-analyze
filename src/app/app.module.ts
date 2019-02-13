@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './navigation/navigation.component';
+import { DEFAULT_LANGUAGE, LANG_FOLDER } from './config.tokens';
 
-export function translateLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './i18n/', '.json');
+export function translateLoaderFactory(http: HttpClient, folder: string) {
+  return new TranslateHttpLoader(http, './' + folder, '.json');
 }
 
 @NgModule({
@@ -31,12 +32,17 @@ export function translateLoaderFactory(http: HttpClient) {
     NgbModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
-        deps: [HttpClient],
+        deps: [HttpClient, LANG_FOLDER],
         provide: TranslateLoader,
         useFactory: translateLoaderFactory
       }
     }),
     AppRoutingModule
+  ],
+  providers: [
+    { provide: DEFAULT_LANGUAGE, useValue: window['DEFAULT_LANGUAGE'] || 'en' },
+    { provide: LANG_FOLDER, useValue: window['LANG_FOLDER'] || 'i18n/' },
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
